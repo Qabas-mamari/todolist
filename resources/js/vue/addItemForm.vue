@@ -1,10 +1,12 @@
 <template>
     <div class="addItem">
         <input type="text" name="" id="" v-model="item.name">
+
+        <!-- check if name is active or not and crate class plus -->
         <font-awesome-icon 
-        icon="plus-square"
-        @click="addItem()"
-        :class="[item.name ? 'active' : 'inactive', 'plus']" />
+            icon="plus-square"
+            @click="addItem()"
+            :class="[item.name ? 'active' : 'inactive', 'plus']" />
     </div>
 </template>
 
@@ -22,13 +24,13 @@ export default{
     methods:{
         addItem(){
             if(this.item.name == ""){
-                return;
+                return; //return nothing if input is empty
             }
 
             axios.post('api/item/store', {
                 item: this.item
             }).then(response=> {
-                if(response.status == 201){
+                if(response.status == 201){ //201 is successfully creation
                     this.item.name = "";
                     this.$emit('reloadlist');
                 }

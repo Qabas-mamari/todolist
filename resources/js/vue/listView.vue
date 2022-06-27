@@ -1,6 +1,8 @@
 <template>
     <div>
+        <!-- looping item by using index -->
         <div v-for="(item, index) in items" :key="index">
+            <!-- passing each item in item -->
             <list-item
                 :item="item"
                 class="item"

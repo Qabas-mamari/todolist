@@ -1,11 +1,14 @@
 <template>
+    <!-- container will contain header and list -->
     <div class="todoListContainer">
+        <!-- header -->
         <div class="heading">
             <h2 id="title">Todo List</h2>
             <add-item-form 
                 v-on:reloadlist="getList()"
             />
         </div>
+        <!-- to Do list -->
         <list-view 
             :items="items"
             v-on:reloadlist="getList()"
@@ -15,7 +18,6 @@
 
 <script>
 import axios from "axios"
-
 import addItemForm from "./addItemForm"
 import listView from "./listView"
 export default{
@@ -25,14 +27,14 @@ export default{
     },
     data: function(){
         return{
-            items:[]
+            items:[] 
         }
     },
     methods:{
         getList() {
             axios.get('api/items')
             .then(response=> {
-                this.items = response.data
+                this.items = response.data 
             })
             .catch(error =>{
                 console.log(error);

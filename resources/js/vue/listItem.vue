@@ -5,13 +5,20 @@
             @change="updateCheck()"
             v-model="item.completed"
         />
+        <!-- depending on complete action -->
          <span 
-         :class="[item.completed? 'completed' : '', 'itemText']">
+            :class="[item.completed? 'completed' : '', 'itemText']">
             {{item.name}}
          </span>
+         <!-- edit -->
+          <!-- <button @click="editItem()" class="edit">
+            <font-awesome-icon icon="pen" />
+         </button> -->
+         <!-- delete button  -->
          <button @click="removeItem()" class="trashcan">
             <font-awesome-icon icon="trash" />
          </button>
+         
     </div>
 </template>
 
@@ -21,6 +28,7 @@ import axios from 'axios'
 export default{
     props: ['item'],
     methods:{
+
         updateCheck(){
             axios.put('api/item/' + this.item.id, {
                 item: this.item
@@ -69,6 +77,14 @@ export default{
         border: none;
         color: #ff0000;
         outline: none;
+        cursor: pointer;
 
+    }
+    .edit{
+        background: #e6e6e6;
+        border: none;
+        color: #3300ff;
+        outline: none; 
+        cursor: pointer; 
     }
 </style>
