@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use Illuminate\Support\Carbon;
-
+use Illuminate\Support\Facades\Log;
 class ItemController extends Controller
 {
     /**
@@ -74,11 +74,12 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // Log::info( $request->item['name']);
         $exitingItem = Item::find($id);
         if($exitingItem){
-            $exitingItem->completed = $request->item['completed']? true :false;
+            $exitingItem->completed =  !$exitingItem->completed;
             $exitingItem->completed_at = $request->item['completed']?  Carbon::now() :null;
-            $exitingItem->name = $request->name;
+           $exitingItem->name =$request->item['name'];
             $exitingItem->save();
             return $exitingItem;
             

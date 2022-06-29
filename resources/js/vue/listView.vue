@@ -1,11 +1,10 @@
 <template>
     <div>
-        <!-- looping item by using index -->
-        <div v-for="(item, index) in items" :key="index">
-            <!-- passing each item in item -->
+        <div v-for="(item, index) in items" :key="index" c>
+
             <list-item
                 :item="item"
-                class="item"
+                class=""
                 v-on:itemchanged="$emit('reloadlist')"
             />
         </div>
@@ -24,10 +23,10 @@ export default{
 </script>
 
 <style scoped>
-    .item{
+    /* .item{
         background: #e6e6e6;
         padding: 5px;
         margin-top: 5px;
-    }
+    } */
 
 </style>

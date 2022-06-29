@@ -14,11 +14,12 @@ require('./bootstrap');
 
 import { createApp } from 'vue';
 import App from './vue/app';
-
+import router from './router';
 // icon
-import {library} from '@fortawesome/fontawesome-svg-core';
-import {faPlusSquare, faTrash, faPen} from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPlusSquare, faTrash, faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+// import { vue } from 'laravel-mix';
 
 library.add(faPlusSquare, faTrash, faPen);
 
@@ -28,6 +29,7 @@ library.add(faPlusSquare, faTrash, faPen);
 //     components: { App, FontAwesomeIcon }
 // }).mount('#app')
 
-createApp(App)
-    .component("font-awesome-icon", FontAwesomeIcon)
-    .mount('#app')
+const app = createApp(App);
+app.component("font-awesome-icon", FontAwesomeIcon);
+app.use(router)
+app.mount('#app')

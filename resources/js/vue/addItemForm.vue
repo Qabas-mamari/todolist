@@ -1,7 +1,6 @@
 <template>
     <div class="addItem">
-        <input type="text" name="" id="" v-model="item.name">
-
+        <input type="text" v-model="item.name" class="rounded-lg" @keyup.enter="addItem()">
         <!-- check if name is active or not and crate class plus -->
         <font-awesome-icon 
             icon="plus-square"
@@ -9,6 +8,8 @@
             :class="[item.name ? 'active' : 'inactive', 'plus']" />
     </div>
 </template>
+
+
 
 <script>
 import axios from 'axios';

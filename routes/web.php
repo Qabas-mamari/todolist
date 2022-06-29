@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/{vue?}', function () {
+    // Artisan::call("migrate:fresh --seed");
     return view('welcome');
-});
+})->where('vue', '^(?!api).*$')->name('welcome');
