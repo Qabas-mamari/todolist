@@ -19,14 +19,14 @@ Combining Laravel API with Vue.js and Tailwind CSS can provide a powerful and ef
 By combining these technologies, we can create a robust and modern To-Do List application. Laravel API handles the backend logic and data storage, while Vue.js with Tailwind CSS provides an interactive and visually pleasing frontend experience. Postman helps in testing and validating the API endpoints during development.
 
 # To-Do-List Pages 
-![image](https://github.com/Qabas-mamari/todolist/assets/85394333/b132c36f-aad3-4b0b-98b6-fee25d80f11a)
-Add your new task 
-![image](https://github.com/Qabas-mamari/todolist/assets/85394333/8f5c06db-997d-4a6c-b7d7-1070d485df2e)
-The new task are added in the list
-![image](https://github.com/Qabas-mamari/todolist/assets/85394333/8f056cee-2edf-4f62-bc22-7211d4600f05)
-User can check the task if completed by click on clock icon:
-![image](https://github.com/Qabas-mamari/todolist/assets/85394333/6ae5db5c-99a3-42b3-af88-f4c67009adc9)
-Or updated by click on pen icon and save the new changes:
-![image](https://github.com/Qabas-mamari/todolist/assets/85394333/4dc19b65-ac4b-40aa-a5f1-6da83b0ede2e)
+![image](https://github.com/Qabas-mamari/todolist/assets/85394333/b132c36f-aad3-4b0b-98b6-fee25d80f11a) <br/>
+Add your new task <br/>
+![image](https://github.com/Qabas-mamari/todolist/assets/85394333/8f5c06db-997d-4a6c-b7d7-1070d485df2e)<br/>
+The new task are added in the list<br/>
+![image](https://github.com/Qabas-mamari/todolist/assets/85394333/8f056cee-2edf-4f62-bc22-7211d4600f05)<br/>
+User can check the task if completed by click on clock icon:<br/>
+![image](https://github.com/Qabas-mamari/todolist/assets/85394333/6ae5db5c-99a3-42b3-af88-f4c67009adc9)<br/>
+Or updated by click on pen icon and save the new changes:<br/>
+![image](https://github.com/Qabas-mamari/todolist/assets/85394333/4dc19b65-ac4b-40aa-a5f1-6da83b0ede2e)<br/>
 Or delete the task by click on trask icon.
 
