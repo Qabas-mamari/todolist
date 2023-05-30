@@ -1,35 +1,45 @@
-<template>
+    <template>
     <div class="flex pt-2 border-b">
+        <!-- update check icon start -->
         <div class="flex-none w-14 h-14">
-            <!-- <span>{{edit}}</span> -->
             <a @click="updateCheck()" class="cursor-pointer">
+                <!--  that changes to item.completed will be reflected in the icon's appearance, and vice versa. -->
+                <!--  If item.completed is true, it uses the "check" icon; otherwise, it uses the "clock" icon. -->
                 <font-awesome-icon v-model="item.completed" :icon="item.completed ? 'check' : 'clock'"
-                    class="fill-green-600" />
+                    class="" />
             </a>
         </div>
+        <!-- update check icon end -->
+
+        <!-- updated text style start -->
         <div v-show="!edit" class="flex-initial w-64">
-            <span :class="[item.completed ? 'text-green-600 line-through items-start' : '', 'itemText']">
+            <span :class="[item.completed ? 'text-gray-400 line-through items-start' : '', 'itemText']">
                 {{ item.name }}
             </span>
         </div>
-        
-        
+        <!-- updated text style end -->
+
+        <!-- update text start -->
         <div v-show="edit" class="flex-initial w-64">
             <input type="text" @keyup.enter="updateName()" v-model="item.name"
                 class="rounded-lg max-w-lg m-2 p-1 bg-slate-100">
             <font-awesome-icon icon="floppy-disk" @click="updateName()" />
         </div>
+        <!-- update text end -->
+
 
         <div v-show="!edit" class="flex-none w-14 h-14 justify-between">
+            <!-- edit icon -->
             <button @click="toggleEdit()" class="mx-3">
                 <font-awesome-icon icon="pen" />
             </button>
+            <!-- remove icon -->
             <button @click="removeItem()" class="trashcan">
                 <font-awesome-icon icon="trash" />
             </button>
         </div>
     </div>
-    
+
 </template>
 
 <script>
@@ -40,15 +50,14 @@ export default {
     data: () => {
         return {
             edit: false,
-            // item: {
-            //     name: ""
-            // }
         }
     },
     methods: {
         updateName() {
             console.log(this.item.id);
+            //1. makes an HTTP PUT request to the 'api/item/' + this.item.id endpoint using the axios library.
             axios.put('api/item/' + this.item.id, {
+                //1.1 The request payload includes an object with a key 'item' and the value of this.item.
                 item: this.item
             }).then(response => {
                 if (response.status == 200) { //201 is successfully creation
@@ -66,10 +75,11 @@ export default {
 
         },
         updateCheck() {
+            //1. makes an HTTP PUT request to the 'api/item/' + this.item.id endpoint using the axios library.
             axios.put('api/item/' + this.item.id, {
+                //1.1 The request payload includes an object with a key 'item' and the value of this.item.
                 item: this.item
-            })
-                .then(response => {
+            }).then(response => {
                     if (response.status == 200) {
                         this.$emit('itemchanged');
                     }

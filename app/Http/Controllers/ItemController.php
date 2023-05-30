@@ -19,16 +19,6 @@ class ItemController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -44,28 +34,6 @@ class ItemController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -74,15 +42,24 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Log::info( $request->item['name']);
+        //1. $exitingItem is assigned the result of querying the Item model with the given $id.
         $exitingItem = Item::find($id);
+
+        //2. The code checks if $exitingItem exists
         if($exitingItem){
+            //2.1  Updates the completed field of the $exitingItem by negating its current value
             $exitingItem->completed =  !$exitingItem->completed;
+            //2.2 updates the completed_at field based on the value of $request->item['completed'].
+            //2.3 If it's true, it sets the current timestamp using Carbon::now(). Otherwise, it sets the field to null.
             $exitingItem->completed_at = $request->item['completed']?  Carbon::now() :null;
-           $exitingItem->name =$request->item['name'];
+            //2.4 The name field of $exitingItem is updated with the value from $request->item['name'].
+            $exitingItem->name =$request->item['name'];
+
             $exitingItem->save();
+
+            // Finally, the updated $exitingItem is returned as the response.
             return $exitingItem;
-            
+
         }
         return "Item not found";
     }
